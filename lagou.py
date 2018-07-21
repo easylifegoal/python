@@ -4,7 +4,8 @@
 import requests
 import csv
 import json
-DOAWLOAD_URL = "https://www.lagou.com/jobs/positionAjax.json"
+
+DOWNLOAD_URL = "https://www.lagou.com/jobs/positionAjax.json"
 
 
 def get_content(url):
@@ -14,7 +15,7 @@ def get_content(url):
         # "Origin": "https://www.lagou.com",
         "Referer": "https://www.lagou.com/jobs/list_Python?px=default&city=%E5%85%A8%E5%9B%BD",
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36"
-        }
+    }
     page = 1
     result_list = []
     while True:
@@ -32,7 +33,7 @@ def get_content(url):
                 json_item['district'], json_item['education'],
                 json_item['positionName'], json_item['salary'],
                 json_item['workYear']
-                ]
+            ]
             result_list.append(item)
         page += 1
 
@@ -44,4 +45,4 @@ def write_csv(list):
 
 
 if __name__ == '__main__':
-    get_content(DOAWLOAD_URL)
+    get_content(DOWNLOAD_URL)
